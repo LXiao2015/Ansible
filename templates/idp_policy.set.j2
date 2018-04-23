@@ -1,0 +1,25 @@
+{% for item in idp_attack_info %}
+    {% if item.predefine_idp=='enable' %}
+        set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} match from-zone {{item.rule_src_zone}} to-zone {{item.rule_dst_zone}} source-address any destination-address any application default
+        
+        set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then action {{item.idpruleaction}}
+        set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then notification log-attacks alert
+        set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then severity {{item.idp_rule_sev}}
+    {% else %}
+        {% for i in item.custom_attack %}
+            set security idp custom-attack {{i.name}}
+            set security idp custom-attack sig1 severity {{i.severity}}
+            set security idp custom-attack sig1 recommended-action {{i.action}}
+            set security idp custom-attack sig1 attack-type signature direction {{i.direction}}
+            set security idp custom-attack sig1 attack-type signature context packet
+            set security idp custom-attack sig1 attack-type signature shellcode all
+            set security idp custom-attack sig1 time-binding scope source count 10
+            set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} match from-zone {{item.rule_src_zone}} to-zone {{item.rule_dst_zone}} source-address any destination-address any application default
+            set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} match attacks custom-attacks {{i.name}}
+            set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then action {{item.idpruleaction}}
+            set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then notification log-attacks alert
+            set security idp idp-policy {{idppolicy_name}} rulebase-ips rule {{idprule_name}} then severity {{item.idp_rule_sev}}
+        {% endfor %}
+    {% endif %}
+    
+{% endfor %}

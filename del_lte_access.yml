@@ -1,0 +1,6 @@
+[vFW]
+
+192.168.1.16
+[vFW:vars]
+minion_id = 1
+

@@ -1,0 +1,6 @@
+[hub]
+192.168.1.18
+
+[hub:vars]
+minion_id = 1
+

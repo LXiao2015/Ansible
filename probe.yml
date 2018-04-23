@@ -1,0 +1,32 @@
+---
+- name: Configure Probes
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    probe: [
+      {'owner': '{{owner}}', 'name': '{{test_name}}', 'type': '{{type}}', 'target': '{{target}}', 
+      'test_interval': '{{test_interval}}', 'dscp_bits': '{{dscp_bits}}', 'history_size': '{{history_size}}', 
+      'moving_average_size': '{{moving_average_size}}', 'count': '{{count}}', 'probe_interval': '{{probe_interval}}', 
+      'source_address': '{{source_address}}', 'data': '{{data}}', 'data_size': '{{data_size}}', 'port': '{{destination_port}}', 
+      'HW_timestamp': '{{HW_timestamp}}'} ]
+
+  tasks:
+    - name: Build probe configurations
+      template: src=templates/probe.set.j2 dest={{build_dir}}/probe.set
+      with_items: "{{ probe }}"
+
+    - name: Apply probe configurations
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/probe.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log 
+        comment='Set Probe To "{{target}}"'

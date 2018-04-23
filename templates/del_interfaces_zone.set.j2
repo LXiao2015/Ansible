@@ -1,0 +1,5 @@
+{% for i in interfaces %}
+	{% if i.zone is defined%}
+del security zones security-zone {{ i.zone }} interfaces {{ i.interface }}.{{ i.unit }}
+	{% endif %}
+{% endfor %}

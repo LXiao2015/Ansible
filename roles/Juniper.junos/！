@@ -1,0 +1,37 @@
+---
+   - name: Configure utm policies
+     hosts: 112.35.30.65
+     connection: local
+     gather_facts: no
+     roles:
+     - Juniper.junos
+     vars:
+     - inventory_hostname: "112.35.30.65"
+     - junos_user: "root"
+     - junos_password: "r00t10086!"
+     - build_dir: "/etc/ansible/roles/Juniper.junos"
+     - utm_policy_name: "Basic_UTM-2"
+     - anti_virus_f: "enable"
+     - anti_spam_f: "enable"
+     - url_filtering_f: "enable"
+     - content_filtering_f: "enable"
+     - anti_virus_item: [{"antivirus-http":"enable","antivirus-smtp":"enable","antivirus-ftp":"enable"}]
+     - anti_spam_item: [{"antispam-default":"","antispam-custom":"enable", "black-list":[{"value":"[150.61.8.134 150.61.8.206]","pattern-name":"url-black-1","category-name":"url-category-black-1"}],"white-list":[{"value":"[150.1.2.3 150.1.2.4]","pattern-name":"url-white-1","category-name":"url-category-white-1"}],"spam-action":"block","custom-tag-string":"***spam***","sbl-profile-name":"antispam-sblpro-1"}]
+     - url_filtering_item: [{"black-list":[{"value":"[http://www.3721.net]","pattern-name":"url-black-2","category-name":"url-category-black-2","action":"block"}],"white-list":[{"value":"[http://www.juniper.net]","pattern-name":"url-white-2","category-name":"url-category-white-2","action":"permit"}],"fallback-setting":[{"default":"block","server-connectivity":"block","timeout":"block","too-many-requests":"block"}],"url-filtering-name":"surfprofile-1"}]
+     - con_filter_term: [{ "file-ext-name":"file-ext-1","file-ext-val":"[zip js]", "mine-name":"mine-1","mine-val":"[video/quicktime image/x-portable-anymap x-world/x-vrml]", "ex-mine-name":"ex-mime-1","ex-mine-val":"[video/quicktime-inappropriate]","confilter-name":"confilter-profile-1","block-contype":"java-applet exe http-cookie zip"}]
+     - utm_policy_info: [{"src_zone":"trust","dst_zone":"untrust","src_address":"any","dst_address":"any","policy_name":"Client-Outbound"}]
+    
+     tasks:
+     - name: Config anti-virus
+       template: src=/etc/ansible/roles/Juniper.junos/templates/utm_policy_antivirus.set.j2 dest={{build_dir}}/utm_policy_antivirus.set
+       with_items: anti_virus_item
+
+     - name: Apply anti-virus
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_antivirus.set
+        overwrite=false
+
+

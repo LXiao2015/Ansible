@@ -1,0 +1,5 @@
+{% for i in ipsec %}
+del security ipsec proposal {{ i.ipsec_policy_proposal }}
+del security ipsec policy {{ i.ipsec_policy_name }}
+del security ipsec vpn {{ i.ipsec_vpn_name }}
+{% endfor %}

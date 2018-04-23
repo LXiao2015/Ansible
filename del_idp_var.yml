@@ -1,0 +1,10 @@
+[del_idp_var]
+
+192.168.1.17
+[del_idp_var:vars]
+idp_policyname = "basic_policy_1"
+idp_rule_name = "R1"
+
+cus_attack_name= "null"
+ 
+security_policy_name = "IDP_Client_Outbound_1"

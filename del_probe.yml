@@ -1,0 +1,30 @@
+---
+- name: Delete Probes
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    probe: [
+      {'owner': '{{owner}}', 'name': '{{test_name}}'} ]
+
+  tasks:
+    - name: Build delete probe configurations
+      template: 
+        src=templates/del_probe.set.j2 
+        dest={{build_dir}}/del_probe.set
+      with_items: '{{probe}}'
+
+    - name: Apply delete probe configurations
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/del_probe.set 
+        overwrite=no logfile=logs/{{ inventory_hostname }}.log
+        comment='Delete Probe'
+

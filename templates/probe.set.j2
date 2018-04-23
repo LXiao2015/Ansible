@@ -1,0 +1,39 @@
+{% for i in probe %}
+set services rpm probe {{i.owner}} test {{i.name}} probe-type {{i.type}}
+set services rpm probe {{i.owner}} test {{i.name}} target {{i.target}}
+
+	{% if i.dscp_bits != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} dscp-code-points {{i.dscp_bits}}
+	{% endif %}
+	{% if i.test_interval != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} test-interval {{i.test_interval}}
+	{% endif %}
+	{% if i.probe_interval != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} probe-interval {{i.probe_interval}}
+	{% endif %}
+	{% if i.count != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} probe-count {{i.count}}
+	{% endif %}
+	{% if i.history_size != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} history-size {{i.history_size}}
+	{% endif %}
+	{% if i.moving_average_size != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} moving-average-size {{i.moving_average_size}}
+	{% endif %}
+	{% if i.source_address != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} source-address {{i.source_address}}
+	{% endif %}
+	{% if i.data != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} data-fill {{i.data}}
+	{% endif %}
+	{% if i.data_size != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} data-size {{i.data_size}}
+	{% endif %}
+	{% if i.HW_timestamp == 1 %}
+set services rpm probe {{i.owner}} test {{i.name}} hardware-timestamp
+	{% endif %}
+	{% if i.port != 'null' %}
+set services rpm probe {{i.owner}} test {{i.name}} destination-port {{i.port}}
+	{% endif %}
+
+{% endfor %}

@@ -1,0 +1,20 @@
+[vFW]
+192.168.1.16
+[vFW:vars]
+owner = 'CustometC'
+test_name = 'testC'
+type = 'http-get'
+target = 'url http://restapi.amap.com/v3/geocode/geo'
+
+test_interval = 2
+dscp_bits = '001111'
+history_size = 50
+moving_average_size = 7
+count = 3
+probe_interval = 5
+source_address ='192.168.102.254'
+
+HW_timestamp = null
+destination_port = null
+data_size = null
+data = null

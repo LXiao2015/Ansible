@@ -1,0 +1,29 @@
+---
+- name: Configure ACL
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    acl: [
+      {'acl_name': '{{acl_name}}', 'term_name': '{{term_name}}', 'match_key': '{{match_key}}', 
+      'match_value': '{{match_value}}', 'action': '{{action}}'} ]
+
+  tasks:
+    - name: Build ACL configurations
+      template: src=templates/acl.set.j2 dest={{build_dir}}/acl.set
+      with_items: "{{acl}}"
+
+    - name: Apply ACL configurations
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/acl.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Apply ACL'

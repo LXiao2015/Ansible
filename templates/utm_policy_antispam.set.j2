@@ -1,0 +1,18 @@
+{% if anti_spam_f =='enable' %}
+    {% for item in anti_spam_info %}
+    {% if item.antispam_default =='enable' %}
+        set security utm feature-profile anti-spam sbl profile sblprofile1 sbl-default-server spam-action block
+        set security utm feature-profile anti-spam sbl profile sblprofile1 sbl-default-server custom-tag-string ***spam***
+        set security utm utm-policy {{ utm_policy_name }} anti-spam smtp-profile sblprofile1
+    {% else %}
+        {% for i in item.black_list %}
+            set security utm custom-objects url-pattern {{i.pattern_name}} value {{i.value}}
+            set security utm feature-profile anti-spam address-blacklist {{i.pattern_name}}
+        {% endfor %}
+        set security utm feature-profile anti-spam sbl profile {{item.sbl_profile_name}}
+        set security utm feature-profile anti-spam sbl profile {{item.sbl_profile_name}} spam-action {{item.spam_action}}
+        set security utm feature-profile anti-spam sbl profile {{item.sbl_profile_name}} custom-tag-string ***spam***
+        set security utm utm-policy {{ utm_policy_name }} anti-spam smtp-profile {{item.sbl_profile_name}}
+    {% endif %}       
+    {% endfor %}
+{% endif %}

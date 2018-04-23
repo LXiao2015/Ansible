@@ -1,0 +1,11 @@
+{% for i in ipsec %}
+set security ipsec proposal {{ i.ipsec_policy_proposal }} protocol esp
+set security ipsec proposal {{ i.ipsec_policy_proposal }} authentication-algorithm {{ i.ipsec_auth_algorithm }}
+set security ipsec proposal {{ i.ipsec_policy_proposal }} encryption-algorithm {{ i.ipsec_enc_algorithm }}
+set security ipsec policy {{ i.ipsec_policy_name }} perfect-forward-secrecy keys {{ i.PFS_keys }}
+set security ipsec policy {{ i.ipsec_policy_name }} proposals {{ i.ipsec_policy_proposal }}
+set security ipsec vpn {{ i.ipsec_vpn_name }} ike gateway {{ i.ike_gateway }}
+set security ipsec vpn {{ i.ipsec_vpn_name }} ike ipsec-policy {{ i.ipsec_policy_name }} 
+set security ipsec vpn {{ i.ipsec_vpn_name }} bind-interface {{ i.tunnel_int }}
+set security ipsec vpn {{ i.ipsec_vpn_name }} establish-tunnels immediately
+{% endfor %}

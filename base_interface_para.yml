@@ -1,0 +1,6 @@
+[interface_para]
+192.168.1.16
+[interface_para:vars]
+interface_name="ge-0/0/4"
+unit_name = "0"
+address ="192.168.44.1/24"

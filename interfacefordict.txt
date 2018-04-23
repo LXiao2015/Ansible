@@ -1,0 +1,6 @@
+cpe2:
+    True
+cpeCloud:
+    True
+cpe1:
+    True

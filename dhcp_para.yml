@@ -1,0 +1,11 @@
+[vFW]
+192.168.1.16
+
+[vFW:vars]
+pool_name = 'p4'
+subnet = '200.0.0.0/8'
+range_name = 'r4'
+low_addr = '200.0.0.0'
+high_addr = '200.1.0.0'
+name_server = '114.114.114.114'
+router = '200.0.0.1'

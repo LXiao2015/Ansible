@@ -1,0 +1,5 @@
+set access address-assignment pool p4 family inet network 200.0.0.0/8
+set access address-assignment pool p4 family inet range r4 low 200.0.0.0
+set access address-assignment pool p4 family inet range r4 high 200.1.0.0
+set access address-assignment pool p4 family inet dhcp-attributes name-server 114.114.114.114
+set access address-assignment pool p4 family inet dhcp-attributes router 200.0.0.1

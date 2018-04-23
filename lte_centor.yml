@@ -1,0 +1,20 @@
+[hub]
+192.168.1.18
+
+[hub:vars]
+minion_id= 1
+ext_interface = 'ge-0/0/0'
+local_identity = 'test1'
+remote_identity = 'CGW-2'
+local_address = '10.112.44.113'
+
+ike_auth_algorithm = 'sha1'
+ike_enc_algorithm = 'aes-128-cbc'
+dh_group = 'group2'
+shared_secret = 'ascii-text $ABC123'
+DPD_interval = 10
+DPD_threshold = 3
+ 
+ipsec_auth_algorithm = 'hmac-md5-96'
+ipsec_enc_algorithm = '3des-cbc'
+PFS_keys = 'group2'

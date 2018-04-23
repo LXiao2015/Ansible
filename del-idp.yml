@@ -1,0 +1,21 @@
+---
+- name: Delete idp policy
+  hosts: del_idp_var
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    delidp: [
+      {'idp_policyname': '{{idp_policyname}}', 'security_policy_name': '{{security_policy_name}}', 'cus_attack_name': '{{cus_attack_name}}', 'idp_rule_name': '{{idp_rule_name}}'} ]
+
+  tasks:
+    - name: Delete utm configurations
+      template: src=templates/del-idp.set.j2 dest={{build_dir}}/del-idp.set
+      with_items: '{{delidp}}'
+
+    - name: Apply delete utm configurations
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/del-idp.set overwrite=no logfile=logs/{{ inventory_hostname }}.log

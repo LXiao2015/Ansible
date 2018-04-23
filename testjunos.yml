@@ -1,0 +1,23 @@
+---
+ - hosts: all
+   user: root
+   roles: 
+   - Juniper.junos
+   connection: local
+   gather_facts: no
+   vars:
+   - inventory_hostname: "112.35.30.65"
+   - user: "root"
+   - passwd: "r00t10086!"
+
+   tasks: 
+   - name: checking netconf connectivity
+     wait_for: host={{inventory}} port=830 timeout=5
+
+   - name: deploy junos
+     junos_install_config: 
+       host={{inventory_hostname}}
+       user={{user}}
+       passwd={{passwd}}
+       file=testjunos.set
+       logfile=

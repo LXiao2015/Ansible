@@ -1,0 +1,28 @@
+---
+- name: Configure ACL
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    acl: [
+      {'acl_name': '{{acl_name}}', 'term_name': '{{term_name}}'} ]
+
+  tasks:
+    - name: Build Delete ACL configurations
+      template: src=templates/del_acl.set.j2 dest={{build_dir}}/del_acl.set
+      with_items: '{{acl}}'
+
+    - name: Delete ACL configurations
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/del_acl.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Delete ACL'

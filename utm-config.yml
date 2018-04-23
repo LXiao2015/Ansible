@@ -1,0 +1,93 @@
+---
+   - name: Configure utm policies
+     hosts: lte_node
+     connection: local
+     gather_facts: no
+     roles:
+     - Juniper.junos
+     vars:
+     - junos_user: "root"
+     - junos_password: "TURdj5mplsvpn!"
+     - build_dir: "/tmp/"
+     - utm_policy_name: "{{ utm_policyname }}"
+     - anti_virus_f: "{{ anti_virus}}"
+     - anti_spam_f: "{{ anti_spam }}"
+     - url_filtering_f: "{{ url_filtering }}"
+     - content_filtering_f: "{{ content_filtering }}"
+     - anti_spam_info: [{ "antispam_default":"{{ antispam_default }}","antispam_custom":"{{ antispam_custom }}", 
+      "black_list":[{"value":"{{spam_black_list_value}}","pattern_name":"{{spam_black_list_pattern_name}}"}],
+      "spam_action":"{{spam_action}}","sbl_profile_name":"{{sbl_profile_name}}" }]
+     - url_filtering_info: [{"black_list":[{"value":"{{url_black_list_value}}",
+     "pattern_name":"{{url_black_list_pattern_name}}","category_name":"{{url_black_list_category_name}}",
+     "action":"{{url_black_list_action}}"}],"url_filtering_name":"{{url_filtering_name}}"}]
+     - con_filter_info: [{"confilter_name":"{{confilter_name}}","block_contype":"{{block_contype}}"}]
+     - utm_policy_info: [{"old":"{{old_status}}","old_policy_name":"{{old_policy_name}}","old_src_zone":"{{old_src_zone}}","old_dst_zone":"{{old_dst_zone}}",
+     "src_zone":"{{src_zone}}","dst_zone":"{{dst_zone}}","src_address":"{{src_address}}","dst_address":"{{dst_address}}","new_policy_name":"{{new_policy_name}}"}]
+    
+     tasks:
+     - name: Config anti-virus
+       template: src=templates/utm_policy_antivirus.set.j2 dest={{build_dir}}/utm_policy_antivirus.set
+
+     - name: Apply anti-virus
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_antivirus.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+     - name: Config anti-spam
+       template: src=templates/utm_policy_antispam.set.j2 dest={{build_dir}}/utm_policy_antispam.set
+       with_items: anti_spam_info
+
+     - name: Apply anti-spam
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_antispam.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+     - name: Config URL_filtering
+       template: src=templates/utm_policy_urlfiltering.set.j2 dest={{build_dir}}/utm_policy_urlfiltering.set
+       with_items: url_filtering_info
+
+     - name: Apply URL_filtering
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_urlfiltering.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+     - name: Config Content_filtering
+       template: src=templates/utm_policy_confiltering.set.j2 dest={{build_dir}}/utm_policy_confiltering.set
+       with_items: con_filtering_info
+
+     - name: Apply content_filtering
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_confiltering.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+     - name: Config security policy
+       template: src=templates/utm_policy_match.set.j2 dest={{build_dir}}/utm_policy_match.set
+       with_items: utm_policy_info
+
+     - name: Apply security policy
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/utm_policy_match.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+
+

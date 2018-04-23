@@ -1,0 +1,36 @@
+[lte_node]
+
+192.168.1.16
+[lte_node:vars]
+utm_policyname = "Basic_UTM_1"
+anti_virus = "enable"
+anti_spam = "noenable"
+url_filtering = "enable"
+content_filtering = "enable"
+
+antispam_default= "enable"
+antispam_custom = "enable"
+spam_black_list_value = [150.61.8.134 150.61.8.206]
+spam_black_list_pattern_name = "url_black_1"
+spam_action = "block"
+sbl_profile_name = "antispam_sblpro_1"
+
+url_black_list_value = [http://www.3721.net]
+url_black_list_pattern_name = "url_black_11"
+url_black_list_category_name = "url_category_black_1"
+url_black_list_action = "block"
+url_filtering_name = "surfprofile_1"
+
+confilter_name = "confilter_profile_1"
+block_contype = "java-applet exe http-cookie zip"
+
+old_policy_name = "Client-Outbound-3"
+old_src_zone = "null"
+old_dst_zone = "null"
+old_status= "noenable"
+src_zone = "trust"
+dst_zone = "untrust"
+src_address = "any"
+dst_address = "any"
+new_policy_name = "Client_Outbound_3"
+    

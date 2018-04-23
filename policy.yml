@@ -1,0 +1,45 @@
+---
+- name: Configure Policy and Zones
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "tmp/"
+    policy: [ {'from_zone': '{{from_zone}}', 'to_zone': '{{to_zone}}', 'policy_name': '{{policy_name}}', 
+    'src_addr': '{{src_addr}}', 'dest_addr': '{{dest_addr}}', 'application': '{{application}}', 'action': '{{action}}', 
+    'default_action': '{{default_action}}'} ]
+    zone: [ {'zone_name_1': '{{zone_name_1}}', 'screen_name': '{{screen_name}}', 'zone_name_2': '{{zone_name_2}}', 
+    'interface': '{{interface}}', 'service': '{{service}}'} ]
+
+  tasks:
+    - name: set security policy
+      template: src=templates/policy.set.j2 dest={{build_dir}}/policy.set
+      with_items: '{{policy}}'
+
+    - name: Apply security policy
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/policy.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Apply Security Policy'
+
+    - name: set security zone
+      template: src=templates/policy.set.j2 dest={{build_dir}}/policy.set
+      with_items: '{{zone}}'
+
+    - name: Apply security zone
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/policy.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Apply Security Policy and Zone'

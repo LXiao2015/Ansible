@@ -1,0 +1,62 @@
+---
+- name: Configure Cloud VPN nodes - Customized
+  hosts: hub
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    mss_entries: [ {'protocol': 'ipsec-vpn', 'mss': '1350'} ]
+    interfaces: [
+      {'interface': 'st0', 'unit': '{{minion_id}}', 'family': 'inet', 'addr_type': 'address', 'addr': '10.66.{{minion_id}}.254/24', 
+      'zone':'vpn', 'hit_protocols': ['all'], 'hit_services': ['all']} ]
+    ike: [ 
+      {'ike_name': 'ike-vpn-{{minion_id}}', 'ike_policy_name': 'ike-policy-{{minion_id}}', 'ike_policy_mode': 'aggressive', 
+      'ike_auth_algorithm': '{{ike_auth_algorithm}}', 'ike_enc_algorithm': '{{ike_enc_algorithm}}', 
+      'ike_policy_proposal': 'ike-proposal-{{minion_id}}', 'dh_group': '{{dh_group}}', 'shared_secret': '{{shared_secret}}', 
+      'local_identity': '{{local_identity}}', 'remote_identity': '{{remote_identity}}', 'local_address': '{{local_address}}', 
+      'ext_interface': '{{ext_interface}}', 'DPD_interval': '{{DPD_interval}}', 'DPD_threshold': '{{DPD_threshold}}'}]
+    ipsec: [ 
+      {'ipsec_policy_name': 'vpn-policy-{{minion_id}}', 'ipsec_policy_proposal': 'ipsec-proposal-{{minion_id}}', 
+      'ipsec_auth_algorithm': '{{ipsec_auth_algorithm}}', 'ipsec_enc_algorithm': '{{ipsec_enc_algorithm}}', 
+      'PFS_keys': '{{PFS_keys}}', 'ipsec_vpn_name': 'ipsec-vpn-{{minion_id}}', 'ike_gateway': 'ike-vpn-{{minion_id}}', 
+      'tunnel_int': 'st0.{{minion_id}}'} ]
+
+  tasks:
+    - name: set flow tcp-mss
+      template: src=templates/sec_flow_tcp_mss.set.j2 dest={{build_dir}}/sec_flow_tcp_mss.set
+      with_items: '{{mss_entries}}'
+
+    - name: Apply flow tcp-mss
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/sec_flow_tcp_mss.set overwrite=no logfile=logs/{{ inventory_hostname }}.log comment='Apply flow tcp-mss'
+
+    - name: Build vpn tunnel interface
+      template: src=templates/interfaces.set.j2 dest={{build_dir}}/interfaces.set
+      with_items: '{{interfaces}}'
+
+    - name: Apply vpn tunnel interface
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/interfaces.set overwrite=no logfile=logs/{{ inventory_hostname }}.log comment='Apply VPN tunnel interface'
+
+    - name: Build vpn zone
+      template: src=templates/interfaces_zone.set.j2 dest={{build_dir}}/interfaces_zone.set
+      with_items: '{{interfaces}}'
+
+    - name: Apply vpn zone
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/interfaces_zone.set overwrite=no logfile=logs/{{ inventory_hostname }}.log comment='Apply VPN zone'
+
+    - name: Build VPN Phase 1
+      template: src=templates/customize_centor_vpn_ike.set.j2 dest={{build_dir}}/customize_centor_vpn_ike.set
+      with_items: '{{ike}}'
+
+    - name: Apply VPN Phase 1
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/customize_centor_vpn_ike.set overwrite=no logfile=logs/{{ inventory_hostname }}.log comment='Apply VPN Phase 1'
+
+    - name: Build VPN Phase 2
+      template: src=templates/customize_vpn_ipsec.set.j2 dest={{build_dir}}/customize_vpn_ipsec.set
+      with_items: '{{ipsec}}'
+
+    - name: Apply VPN Phase 2
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/customize_vpn_ipsec.set overwrite=no logfile=logs/{{ inventory_hostname }}.log comment='Apply VPN Phase 2'

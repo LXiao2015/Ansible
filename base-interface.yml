@@ -1,0 +1,29 @@
+---
+   - name: Configure base interface information
+     hosts: interface_para
+     connection: local
+     gather_facts: no
+     roles:
+     - Juniper.junos
+     vars:
+     - junos_user: "root"
+     - junos_password: "TURdj5mplsvpn!"
+     - build_dir: "/tmp/"
+     - interfacename: "{{ interface_name }}"
+     - unitname: "{{ unit_name }}"
+     - inetaddress: "{{ address }}"
+     
+    
+     tasks:
+     - name: Config interface information
+       template: src=templates/base_inteface_info.set.j2 dest={{build_dir}}/base_inteface_info.set
+
+     - name: Apply idp_policy
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/base_inteface_info.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Apply base interface'

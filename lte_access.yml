@@ -1,0 +1,20 @@
+[vFW]
+
+192.168.1.17
+[vFW:vars]
+minion_id= 1
+CLOUD_GW = '192.168.1.18'
+ext_interface = 'ge-0/0/0'
+local_identity = 'cpe2'
+remote_identity = 'CGW-2'
+
+ike_auth_algorithm = 'sha1'
+ike_enc_algorithm = 'aes-128-cbc'
+dh_group = 'group2'
+shared_secret = 'ascii-text $ABC123'
+DPD_interval = 10
+DPD_threshold = 3
+ 
+ipsec_auth_algorithm = 'hmac-md5-96'
+ipsec_enc_algorithm = '3des-cbc'
+PFS_keys = 'group2'

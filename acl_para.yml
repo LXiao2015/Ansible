@@ -1,0 +1,9 @@
+[vFW]
+192.168.1.16
+
+[vFW:vars]
+acl_name = 'acl-100'
+term_name = 't1'
+match_key = 'destination-port'
+match_value = '45'
+action = 'accept'

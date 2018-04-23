@@ -1,0 +1,28 @@
+---
+   - name: Configure base snat information
+     hosts: base_snat_var
+     connection: local
+     gather_facts: no
+     roles:
+     - Juniper.junos
+     vars:
+     - junos_user: "root"
+     - junos_password: "TURdj5mplsvpn!"
+     - build_dir: "/tmp/"
+     - snat_rule: [{"rule-set-name":"{{rule-set-name}}","from-zome":"{{from-zome}}","to-zone":"{{to-zone}}","source-address":"{{source-address}}","from-interface":"{{from-interface}}","to-interface":"{{to-interface}}"}]
+     
+    
+     tasks:
+     - name: Config interface information
+       template: src=templates/base_snat.set.j2 dest={{build_dir}}/base_snat.set
+       with_items:
+
+     - name: Apply idp_policy
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/base_inteface_info.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Apply base interface interface'

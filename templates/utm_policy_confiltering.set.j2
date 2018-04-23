@@ -1,0 +1,7 @@
+{% if url_filtering_f =='enable' %}
+    {% for item in con_filter_info %}
+        set security utm feature-profile content-filtering profile {{item.confilter_name}} block-content-type {{item.block_contype}}
+        set security utm feature-profile content-filtering profile {{item.confilter_name}} notification-options custom-message "The action is not taken" notify-mail-sender type message
+        set security utm utm-policy {{ utm_policy_name }} content-filtering http-profile {{item.confilter_name}}
+    {% endfor %}
+{% endif %}

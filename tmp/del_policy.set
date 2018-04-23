@@ -1,0 +1,9 @@
+    set security policies from-zone trust to-zone trust policy testtest match source-address any
+set security policies from-zone trust to-zone trust policy testtest match destination-address any
+set security policies from-zone trust to-zone trust policy testtest match application any
+set security policies from-zone trust to-zone trust policy testtest then permit
+		set security policies default-policy permit-all
+	
+    set security zones security-zone untrust screen anti-ddos
+		set security zones security-zone untrust interfaces ge-0/0/0.0 host-inbound-traffic system-services all
+	

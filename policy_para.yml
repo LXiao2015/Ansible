@@ -1,0 +1,20 @@
+[vFW]
+192.168.1.16
+
+[vFW:vars]
+from_zone = 'trust'
+to_zone = 'trust'
+policy_name = 'testtest'
+src_addr = 'any'
+dest_addr = 'any'
+application = 'any'
+action = 'permit'
+
+default_action = 'permit-all'
+
+zone_name_1 = 'untrust'
+
+screen_name = 'anti-ddos'
+zone_name_2 = 'untrust'
+interface = 'ge-0/0/0.0'
+service = 'all'

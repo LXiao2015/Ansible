@@ -1,0 +1,29 @@
+[lte_idp]
+
+192.168.1.16
+[lte_idp:vars]
+idp_policy_name="basic_policy_1"
+idp_rule_name="R1"
+rule_src_zone="trust"
+rule_dst_zone="untrust" 
+rule_action="no-action"
+idprule_sev="warning"
+
+predefine_idp ="enable"
+
+custom_idp ="noenable"
+cus_attack_name="null"
+cus_attack_severity="null"
+cus_attack_action="null"
+cus_attack_direction="null"
+
+old_status="noenable"
+old_policy_name ="p_3"
+old_src_zone ="null"
+old_dst_zone ="null"
+
+src_zone ="trust"
+dst_zone ="untrust"
+src_address ="any"
+dst_address ="any" 
+new_policy_name ="IDP_Client_Outbound_1"

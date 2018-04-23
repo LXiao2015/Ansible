@@ -1,0 +1,44 @@
+---
+   - name: Configure IPS policies
+     hosts: lte_idp
+     connection: local
+     gather_facts: no
+     roles:
+     - Juniper.junos
+     vars:
+     - junos_user: "root"
+     - junos_password: "TURdj5mplsvpn!"
+     - build_dir: "/tmp/"
+     - idppolicy_name: "{{ idp_policy_name }}"
+     - idprule_name: "{{ idp_rule_name }}"
+     - idp_attack_info: [{ "idp_rule_sev": "{{ idprule_sev }}","idpruleaction": "{{ rule_action }}","rule_dst_zone": "{{ rule_dst_zone }}","rule_src_zone": "{{ rule_src_zone }}","predefine_idp":"{{ predefine_idp }}","custom_idp":"{{ custom_idp }}", 
+      "custom_attack":[{"name":"{{cus_attack_name}}","severity":"{{cus_attack_severity}}","action":"{{cus_attack_action}}","direction":"{{cus_attack_direction}}"}] }]
+     - security_policy_info: [{"old":"{{old_status}}","old_policy_name":"{{old_policy_name}}","old_src_zone":"{{old_src_zone}}","old_dst_zone":"{{old_dst_zone}}",
+     "src_zone":"{{src_zone}}","dst_zone":"{{dst_zone}}","src_address":"{{src_address}}","dst_address":"{{dst_address}}","new_policy_name":"{{new_policy_name}}"}]
+    
+     tasks:
+     - name: Config idp_policy
+       template: src=templates/idp_policy.set.j2 dest={{build_dir}}/idp_policy.set
+       with_items: idp_attack_info
+
+     - name: Apply idp_policy
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/idp_policy.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log
+
+     - name: Config security policy
+       template: src=templates/idp_policy_match.set.j2 dest={{build_dir}}/idp_policy_match.set
+       with_items: security_policy_info
+
+     - name: Apply security policy
+       junos_install_config: 
+        host={{inventory_hostname}}
+        user={{junos_user}}
+        passwd={{junos_password}}
+        file={{ build_dir }}/idp_policy_match.set
+        overwrite=false
+        logfile=logs/{{ inventory_hostname }}.log

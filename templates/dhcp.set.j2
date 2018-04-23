@@ -1,0 +1,7 @@
+{% for i in dhcp %}
+set access address-assignment pool {{ i.pool_name }} family inet network {{ i.subnet }}
+set access address-assignment pool {{ i.pool_name }} family inet range {{ i.range_name }} low {{ i.low_addr }}
+set access address-assignment pool {{ i.pool_name }} family inet range {{ i.range_name }} high {{ i.high_addr }}
+set access address-assignment pool {{ i.pool_name }} family inet dhcp-attributes name-server {{ i.name_server }}
+set access address-assignment pool {{ i.pool_name }} family inet dhcp-attributes router {{ i.router }}
+{% endfor %}

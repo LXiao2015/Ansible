@@ -1,0 +1,155 @@
+2017-08-01 10:25:28,011:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-01 10:25:28,057:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-01 10:25:28,322:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-01 10:25:28,402:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-01 10:25:28,879:ncclient.transport.session:initialized: session-id=28942 | server_capabilities=<dictionary-keyiterator object at 0x7f66d403dd60>
+2017-08-01 10:25:28,879:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-01 10:25:28,879:CONFIG:112.35.30.65:taking lock
+2017-08-01 10:25:28,880:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:28,996:CONFIG:112.35.30.65:loading config
+2017-08-01 10:25:28,996:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:29,111:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:29,428:CONFIG:112.35.30.65:doing a commit-check, please be patient
+2017-08-01 10:25:29,428:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:29,995:CONFIG:112.35.30.65:committing change, please be patient
+2017-08-01 10:25:29,996:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:32,418:CONFIG:112.35.30.65:unlocking
+2017-08-01 10:25:32,418:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-01 10:25:32,534:CONFIG:112.35.30.65:change completed
+2017-08-01 10:25:32,534:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-29 15:34:16,987:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 15:34:17,030:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 15:34:17,300:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 15:34:17,370:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 15:34:17,742:ncclient.transport.session:initialized: session-id=88478 | server_capabilities=<dictionary-keyiterator object at 0x7f4e36576d60>
+2017-08-29 15:34:17,742:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 15:34:17,742:CONFIG:112.35.30.65:taking lock
+2017-08-29 15:34:17,743:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:34:17,859:CONFIG:112.35.30.65:loading config
+2017-08-29 15:34:17,864:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:34:17,979:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:34:18,295:CONFIG:112.35.30.65:unlocking
+2017-08-29 15:34:18,295:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:34:18,410:CONFIG:112.35.30.65:change completed
+2017-08-29 15:34:18,411:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-29 15:40:13,926:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 15:40:13,977:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 15:40:14,227:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 15:40:14,287:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 15:40:14,643:ncclient.transport.session:initialized: session-id=88517 | server_capabilities=<dictionary-keyiterator object at 0x7f708c0ced60>
+2017-08-29 15:40:14,644:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 15:40:14,644:CONFIG:112.35.30.65:taking lock
+2017-08-29 15:40:14,644:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:40:14,760:CONFIG:112.35.30.65:loading config
+2017-08-29 15:40:14,761:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:40:14,876:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:40:15,192:CONFIG:112.35.30.65:unlocking
+2017-08-29 15:40:15,192:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 15:40:15,308:CONFIG:112.35.30.65:change completed
+2017-08-29 15:40:15,308:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-29 16:24:45,647:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 16:24:45,698:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 16:24:45,978:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 16:24:46,078:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 16:24:46,505:ncclient.transport.session:initialized: session-id=88589 | server_capabilities=<dictionary-keyiterator object at 0x7f8a6a025d60>
+2017-08-29 16:24:46,505:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 16:24:46,506:CONFIG:112.35.30.65:taking lock
+2017-08-29 16:24:46,506:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 16:24:46,622:CONFIG:112.35.30.65:Unable to lock configuration
+2017-08-29 16:28:42,588:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 16:28:42,634:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 16:28:42,894:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 16:28:42,969:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 16:28:43,391:ncclient.transport.session:initialized: session-id=88598 | server_capabilities=<dictionary-keyiterator object at 0x7f3d1ca51d60>
+2017-08-29 16:28:43,391:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 16:28:43,391:CONFIG:112.35.30.65:taking lock
+2017-08-29 16:28:43,392:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 16:28:43,507:CONFIG:112.35.30.65:Unable to lock configuration
+2017-08-29 16:32:18,395:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 16:32:18,445:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 16:32:18,710:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 16:32:18,785:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 16:32:19,157:ncclient.transport.session:initialized: session-id=88610 | server_capabilities=<dictionary-keyiterator object at 0x7f7a18d57d60>
+2017-08-29 16:32:19,157:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 16:32:19,158:CONFIG:112.35.30.65:taking lock
+2017-08-29 16:32:19,158:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 16:32:19,324:CONFIG:112.35.30.65:Unable to lock configuration
+2017-08-29 16:35:50,178:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-29 16:35:50,221:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-29 16:35:50,486:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-29 16:35:50,561:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-29 16:35:50,942:ncclient.transport.session:initialized: session-id=88619 | server_capabilities=<dictionary-keyiterator object at 0x7fb489144d60>
+2017-08-29 16:35:50,942:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-29 16:35:50,942:CONFIG:112.35.30.65:taking lock
+2017-08-29 16:35:50,943:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-29 16:35:51,108:CONFIG:112.35.30.65:Unable to lock configuration
+2017-08-30 09:25:20,078:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-30 09:25:20,123:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-30 09:25:20,383:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-30 09:25:20,458:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-30 09:25:20,834:ncclient.transport.session:initialized: session-id=96251 | server_capabilities=<dictionary-keyiterator object at 0x7fa660c19d60>
+2017-08-30 09:25:20,835:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-30 09:25:20,835:CONFIG:112.35.30.65:taking lock
+2017-08-30 09:25:20,835:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:25:21,001:CONFIG:112.35.30.65:loading config
+2017-08-30 09:25:21,002:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:25:21,168:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:25:21,484:CONFIG:112.35.30.65:unlocking
+2017-08-30 09:25:21,484:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:25:21,599:CONFIG:112.35.30.65:change completed
+2017-08-30 09:25:21,600:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-30 09:28:08,046:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-30 09:28:08,094:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-30 09:28:08,359:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-30 09:28:08,453:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-30 09:28:08,831:ncclient.transport.session:initialized: session-id=96267 | server_capabilities=<dictionary-keyiterator object at 0x7f75b4072d60>
+2017-08-30 09:28:08,831:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-30 09:28:08,831:CONFIG:112.35.30.65:taking lock
+2017-08-30 09:28:08,832:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:28:08,998:CONFIG:112.35.30.65:loading config
+2017-08-30 09:28:08,998:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:28:09,164:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:28:09,530:CONFIG:112.35.30.65:doing a commit-check, please be patient
+2017-08-30 09:28:09,531:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:28:09,746:CONFIG:112.35.30.65:Unable to commit configuration: CommitError(edit_path: [edit security policies from-zone trust to-zone untrust], bad_element: policy Client-Outbound, message: error: mgd: Missing mandatory statement: 'then'
+error: configuration check-out failed: (missing mandatory statements))
+2017-08-30 09:28:09,747:CONFIG:112.35.30.65:unlocking
+2017-08-30 09:28:09,747:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:28:09,963:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-30 09:36:51,175:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-30 09:36:51,226:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-30 09:36:51,506:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-30 09:36:51,596:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-30 09:36:51,962:ncclient.transport.session:initialized: session-id=96300 | server_capabilities=<dictionary-keyiterator object at 0x7f22e814ad60>
+2017-08-30 09:36:51,963:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-30 09:36:51,963:CONFIG:112.35.30.65:taking lock
+2017-08-30 09:36:51,963:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:36:52,079:CONFIG:112.35.30.65:loading config
+2017-08-30 09:36:52,080:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:36:52,295:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:36:52,612:CONFIG:112.35.30.65:doing a commit-check, please be patient
+2017-08-30 09:36:52,612:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:36:53,028:CONFIG:112.35.30.65:Unable to commit configuration: CommitError(edit_path: [edit security policies from-zone trust to-zone untrust], bad_element: policy Client-Outbound, message: error: Source address or address_set (Internal-Clients) not found.
+error: configuration check-out failed)
+2017-08-30 09:36:53,029:CONFIG:112.35.30.65:unlocking
+2017-08-30 09:36:53,029:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:36:53,245:ncclient.operations.rpc:Requesting 'CloseSession'
+2017-08-30 09:38:24,180:CONFIG:112.35.30.65:connecting to host: root@112.35.30.65:830
+2017-08-30 09:38:24,226:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2017-08-30 09:38:24,491:ncclient.transport.ssh:Authentication (publickey) failed.
+2017-08-30 09:38:24,566:ncclient.transport.ssh:Authentication (password) successful!
+2017-08-30 09:38:24,933:ncclient.transport.session:initialized: session-id=96324 | server_capabilities=<dictionary-keyiterator object at 0x7f85ee5f9d60>
+2017-08-30 09:38:24,933:CONFIG:112.35.30.65:pushing file: /etc/ansible/roles/Juniper.junos/testjunos.set
+2017-08-30 09:38:24,933:CONFIG:112.35.30.65:taking lock
+2017-08-30 09:38:24,934:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:25,050:CONFIG:112.35.30.65:loading config
+2017-08-30 09:38:25,050:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:25,266:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:25,632:CONFIG:112.35.30.65:doing a commit-check, please be patient
+2017-08-30 09:38:25,633:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:26,049:CONFIG:112.35.30.65:committing change, please be patient
+2017-08-30 09:38:26,049:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:26,867:CONFIG:112.35.30.65:unlocking
+2017-08-30 09:38:26,867:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2017-08-30 09:38:26,982:CONFIG:112.35.30.65:change completed
+2017-08-30 09:38:26,983:ncclient.operations.rpc:Requesting 'CloseSession'

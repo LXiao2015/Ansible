@@ -1,0 +1,21 @@
+---
+- name: Delete Server Port
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    probe: [
+      {'type': '{{type}}', 'port': '{{port}}'} ]
+
+ tasks:
+    - name: Build probe port configurations
+      template: src=templates/del_probe_port.set.j2 dest={{build_dir}}/del_probe_port.set
+      with_items: '{{probe}}'
+
+    - name: Apply probe port configurations
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/del_probe_port.set overwrite=no logfile=logs/{{ inventory_hostname }}.log

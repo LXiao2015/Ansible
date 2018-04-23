@@ -1,0 +1,16 @@
+{% for i in ike %}
+set security ike proposal {{ i.ike_policy_proposal }} authentication-method pre-shared-keys
+set security ike proposal {{ i.ike_policy_proposal }} dh-group {{ i.dh_group }}
+set security ike proposal {{ i.ike_policy_proposal }} authentication-algorithm {{ i.ike_auth_algorithm }}
+set security ike proposal {{ i.ike_policy_proposal }} encryption-algorithm {{ i.ike_enc_algorithm }}
+set security ike policy {{ i.ike_policy_name }} mode {{ i.ike_policy_mode }}
+set security ike policy {{ i.ike_policy_name }} proposals {{ i.ike_policy_proposal }}
+set security ike policy {{ i.ike_policy_name }} pre-shared-key ascii-text "{{ i.shared_secret }}"
+set security ike gateway {{ i.ike_name }} external-interface {{ i.ext_interface }}
+set security ike gateway {{ i.ike_name }} ike-policy {{ i.ike_policy_name }}
+set security ike gateway {{ i.ike_name }} dynamic hostname {{ i.local_identity }}
+set security ike gateway {{ i.ike_name }} local-identity hostname {{ i.remote_identity }}
+set security ike gateway {{ i.ike_name }} local-address {{ i.local_address }}
+set security ike gateway {{ i.ike_name }} dead-peer-detection interval {{ i.DPD_interval }}
+set security ike gateway {{ i.ike_name }} dead-peer-detection threshold {{ i.DPD_threshold }}
+{% endfor %}

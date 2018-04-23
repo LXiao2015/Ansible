@@ -1,0 +1,17 @@
+{% for i in policy %}
+    {% if i.policy_name != 'null' %}
+del security policies from-zone {{ i.from_zone }} to-zone {{ i.to_zone }} policy {{ i.policy_name }}
+	{% endif %}
+	{% if i.default_action != 'null' %}
+del security policies default-policy {{ i.default_action }}
+	{% endif %}
+{% endfor %}
+
+{% for i in zone %}
+    {% if i.screen_name != 'null' %}
+del security zones security-zone {{ i.zone_name_1 }} screen {{ screen_name }}
+	{% endif %}
+	{% if i.interface != 'null' %}
+del security zones security-zone {{ i.zone_name_2 }} interfaces {{ i.interface }} host-inbound-traffic system-services {{ i.service }}
+	{% endif %}
+{% endfor %}

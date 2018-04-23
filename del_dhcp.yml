@@ -1,0 +1,28 @@
+---
+- name: Delete DHCP
+  hosts: vFW
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "tmp/"
+    dhcp: [ {'pool_name': '{{pool_name}}'} ] 
+
+
+  tasks:
+    - name: set delete dhcp
+      template: src=templates/del_dhcp.set.j2 dest={{build_dir}}/del_dhcp.set
+      with_items: '{{dhcp}}'
+
+    - name: Delete dhcp
+      junos_install_config: 
+        host={{ inventory_hostname }} 
+        user={{ junos_user }} 
+        passwd={{ junos_password }} 
+        file={{ build_dir }}/del_dhcp.set 
+        overwrite=no 
+        logfile=logs/{{ inventory_hostname }}.log
+        comment='Delete DHCP'

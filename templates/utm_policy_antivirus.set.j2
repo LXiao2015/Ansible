@@ -1,0 +1,6 @@
+{% if anti_virus_f=='enable' %}
+    set security utm utm-policy {{ utm_policy_name }} anti-virus http-profile junos-sophos-av-defaults
+    set security utm utm-policy {{ utm_policy_name }} anti-virus imap-profile junos-sophos-av-defaults pop3-profile junos-sophos-av-defaults smtp-profile junos-sophos-av-defaults
+    set security utm utm-policy {{ utm_policy_name }} anti-virus ftp upload-profile junos-sophos-av-defaults 
+    set security utm utm-policy {{ utm_policy_name }} anti-virus ftp download-profile junos-sophos-av-defaults
+{% endif %}

@@ -1,0 +1,22 @@
+---
+- name: Delete utm policy
+  hosts: del_utm_var
+  connection: local
+  gather_facts: no
+  roles:
+    - Juniper.junos
+  vars:
+    junos_user: "root"
+    junos_password: "TURdj5mplsvpn!"
+    build_dir: "/tmp/"
+    delutm: [
+      {'utm_policyname': '{{utm_policyname}}', 'security_policy_name': '{{security_policy_name}}', 'src_zone': '{{src_zone}}', 'dst_zone': '{{dst_zone}}'} ]
+
+  tasks:
+    - name: Delete utm configurations
+      template: src=templates/del-utm.set.j2 dest={{build_dir}}/del-utm.set
+      with_items: '{{delutm}}'
+
+    - name: Apply delete utm configurations
+      junos_install_config: host={{ inventory_hostname }} user={{ junos_user }} passwd={{ junos_password }} file={{ build_dir }}/del-utm.set overwrite=no logfile=logs/{{ inventory_hostname }}.log
+

@@ -1,0 +1,7 @@
+{% for i in acl %}
+	{% if i.term_name != 'null' %}
+		{% if i.acl_name != 'null' %}
+del firewall family inet filter {{ i.acl_name }} term {{ i.term_name }}
+		{% endif %}
+	{% endif %}
+{% endfor %}

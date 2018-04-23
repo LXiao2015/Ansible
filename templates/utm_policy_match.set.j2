@@ -1,0 +1,9 @@
+{% for item in utm_policy_info %}
+    {% if item.old =='enable' %}
+        set security policies from-zone {{item.old_src_zone}} to-zone {{item.old_dst_zone}} policy {{old_policy_name}} then permit application-services utm-policy {{ utm_policy_name }}
+    {% else %}
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} match source-address {{src_address}} destination-address {{dst_address}} application [junos-http junos-ftp junos-smtp junos-pop3 junos-imap]
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} then permit application-services utm-policy {{ utm_policy_name }}
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} then log session-close
+    {% endif %}
+{% endfor %}

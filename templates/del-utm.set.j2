@@ -1,0 +1,7 @@
+{% for item in delutm %}
+    
+        delete security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.security_policy_name}} then permit application-services utm-policy {{ item.utm_policyname }}
+        
+    
+{% endfor %}
+

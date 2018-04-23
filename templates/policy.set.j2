@@ -1,0 +1,20 @@
+{% for i in policy %}
+    {% if i.policy_name != 'null' %}
+set security policies from-zone {{ i.from_zone }} to-zone {{ i.to_zone }} policy {{ i.policy_name }} match source-address {{ i. src_addr }}
+set security policies from-zone {{ i.from_zone }} to-zone {{ i.to_zone }} policy {{ i.policy_name }} match destination-address {{ i.dest_addr }}
+set security policies from-zone {{ i.from_zone }} to-zone {{ i.to_zone }} policy {{ i.policy_name }} match application {{ i.application }}
+set security policies from-zone {{ i.from_zone }} to-zone {{ i.to_zone }} policy {{ i.policy_name }} then {{ i.action }}
+	{% endif %}
+	{% if i.default_action != 'null' %}
+set security policies default-policy {{ i.default_action }}
+	{% endif %}
+{% endfor %}
+
+{% for i in zone %}
+    {% if i.screen_name != 'null' %}
+set security zones security-zone {{ i.zone_name_1 }} screen {{ screen_name }}
+	{% endif %}
+	{% if i.interface != 'null' %}
+set security zones security-zone {{ i.zone_name_2 }} interfaces {{ i.interface }} host-inbound-traffic system-services {{ i.service }}
+	{% endif %}
+{% endfor %}

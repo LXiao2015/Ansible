@@ -1,0 +1,15 @@
+{% if url_filtering_f == 'enable' %}
+    {% for item in url_filtering_info %}
+        {% for i in item.black_list %}
+            set security utm custom-objects url-pattern {{i.pattern_name}} value {{i.value}}
+            set security utm custom-objects custom-url-category {{i.category_name}} value {{i.pattern_name}}
+            set security utm feature-profile web-filtering juniper-enhanced  profile {{item.url_filtering_name}} category {{i.category_name}} action {{i.action}}
+        {% endfor %}
+        set security utm feature-profile web-filtering juniper-enhanced server host surfcontrolserver
+        set security utm feature-profile web-filtering juniper-enhanced profile {{item.url_filtering_name}} fallback-settings default block
+        set security utm feature-profile web-filtering juniper-enhanced profile {{item.url_filtering_name}} fallback-settings server-connectivity block
+        set security utm feature-profile web-filtering juniper-enhanced profile {{item.url_filtering_name}} fallback-settings timeout block
+        set security utm feature-profile web-filtering juniper-enhanced profile {{item.url_filtering_name}} fallback-settings too-many-requests block
+        set security utm utm-policy {{ utm_policy_name }} web-filtering http-profile {{item.url_filtering_name}}     
+    {% endfor %}
+{% endif %}

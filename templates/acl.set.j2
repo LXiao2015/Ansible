@@ -1,0 +1,4 @@
+{% for i in acl %}
+set firewall family inet filter {{ i.acl_name }} term {{ i.term_name }} from {{ i.match_key }} {{ i.match_value }}
+set firewall family inet filter {{ i.acl_name }} term {{ i.term_name }} then {{ i.action }}
+{% endfor %}

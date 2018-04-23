@@ -1,0 +1,5 @@
+{% for i in ike %}
+del security ike proposal {{ i.ike_policy_proposal }}
+del security ike policy {{ i.ike_policy_name }}
+del security ike gateway {{ i.ike_name }}
+{% endfor %}

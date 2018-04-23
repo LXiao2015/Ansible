@@ -1,0 +1,10 @@
+set security idp active-policy {{idppolicy_name}}
+{% for item in security_policy_info %}
+    {% if item.old =='enable' %}
+        set security policies from-zone {{item.old_src_zone}} to-zone {{item.old_dst_zone}} policy {{old_policy_name}} then permit application-services idp
+    {% else %}
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} match source-address {{src_address}} destination-address {{dst_address}} application any
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} then permit application-services idp
+        set security policies from-zone {{item.src_zone}} to-zone {{item.dst_zone}} policy {{item.new_policy_name}} then log session-close
+    {% endif %}
+{% endfor %}
