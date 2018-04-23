@@ -10889,3 +10889,40 @@ error: configuration check-out failed)
 2018-04-23 10:17:32,945:ncclient.operations.rpc:Requesting 'ExecuteRpc'
 2018-04-23 10:17:33,060:CONFIG:192.168.1.16:change completed
 2018-04-23 10:17:33,061:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-23 10:33:17,066:CONFIG:192.168.1.16:connecting to host: root@192.168.1.16:830
+2018-04-23 10:33:17,100:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2018-04-23 10:33:17,385:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-23 10:33:17,725:ncclient.transport.session:initialized: session-id=49449 | server_capabilities=<dictionary-keyiterator object at 0x7fc4c5d3bfc8>
+2018-04-23 10:33:17,726:CONFIG:192.168.1.16:pushing file: /tmp/acl.set
+2018-04-23 10:33:17,726:CONFIG:192.168.1.16:taking lock
+2018-04-23 10:33:17,726:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:17,841:CONFIG:192.168.1.16:loading config
+2018-04-23 10:33:17,842:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:17,957:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:18,273:CONFIG:192.168.1.16:doing a commit-check, please be patient
+2018-04-23 10:33:18,274:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:18,991:CONFIG:192.168.1.16:committing change, please be patient
+2018-04-23 10:33:18,991:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:20,459:CONFIG:192.168.1.16:unlocking
+2018-04-23 10:33:20,460:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:33:20,575:CONFIG:192.168.1.16:change completed
+2018-04-23 10:33:20,575:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-23 10:40:48,503:CONFIG:192.168.1.16:connecting to host: root@192.168.1.16:830
+2018-04-23 10:40:48,535:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.6)
+2018-04-23 10:40:48,779:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-23 10:40:48,855:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-23 10:40:49,215:ncclient.transport.session:initialized: session-id=49506 | server_capabilities=<dictionary-keyiterator object at 0x7f40b85b3ba8>
+2018-04-23 10:40:49,215:CONFIG:192.168.1.16:pushing file: /tmp/del_acl.set
+2018-04-23 10:40:49,215:CONFIG:192.168.1.16:taking lock
+2018-04-23 10:40:49,215:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:49,330:CONFIG:192.168.1.16:loading config
+2018-04-23 10:40:49,330:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:49,445:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:49,710:CONFIG:192.168.1.16:doing a commit-check, please be patient
+2018-04-23 10:40:49,711:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:50,477:CONFIG:192.168.1.16:committing change, please be patient
+2018-04-23 10:40:50,478:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:52,147:CONFIG:192.168.1.16:unlocking
+2018-04-23 10:40:52,150:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-23 10:40:52,265:CONFIG:192.168.1.16:change completed
+2018-04-23 10:40:52,265:ncclient.operations.rpc:Requesting 'CloseSession'
