@@ -4,7 +4,7 @@
 [hub:vars]
 minion_id= 1
 ext_interface = 'ge-0/0/0'
-local_identity = 'test1'
+local_identity = 'cpe1'
 remote_identity = 'CGW-2'
 local_address = '10.112.44.113'
 

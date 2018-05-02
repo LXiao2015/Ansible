@@ -1,0 +1,11 @@
+[base_snat_var]
+192.168.1.16
+
+[base_snat_var:vars]
+rule_set_name="rs1"
+r_name ="rule1"
+from_zone="trust"
+t_zone="untrust"
+address="0.0.0.0/0"
+from_interface="ge-0/0/2.0"
+t_interface="ge-0/0/1.0"

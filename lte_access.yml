@@ -1,11 +1,11 @@
 [vFW]
+192.168.1.16
 
-192.168.1.17
 [vFW:vars]
 minion_id= 1
 CLOUD_GW = '192.168.1.18'
 ext_interface = 'ge-0/0/0'
-local_identity = 'cpe2'
+local_identity = 'cpe1'
 remote_identity = 'CGW-2'
 
 ike_auth_algorithm = 'sha1'

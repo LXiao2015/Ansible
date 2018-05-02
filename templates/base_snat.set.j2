@@ -1,0 +1,12 @@
+{% for item in snat_rule %}
+    {% if item.from_zone !='null' %}
+        set security nat source rule-set {{item.rule_set_name}} from zone {{item.from_zone}}
+        set security nat source rule-set {{item.rule_set_name}} to zone {{item.t_zone}}
+    {% endif %}
+    {% if item.from_interface !='null' %}
+        set security nat source rule-set {{item.rule_set_name}} from interface {{item.from_interface}}
+        set security nat source rule-set {{item.rule_set_name}} to interface {{item.t_interface}}
+    {% endif %}
+    set security nat source rule-set {{item.rule_set_name}} rule {{item.r_name}} match source-address {{item.address}}
+    set security nat source rule-set {{item.rule_set_name}} rule {{item.r_name}} then source-nat interface
+{% endfor %}

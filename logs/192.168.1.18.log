@@ -7088,3 +7088,82 @@ error: configuration check-out failed: (statements constraint check failed))
 2018-04-19 10:23:27,916:ncclient.operations.rpc:Requesting 'ExecuteRpc'
 2018-04-19 10:23:28,783:CONFIG:192.168.1.18:change completed
 2018-04-19 10:23:28,783:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-25 17:17:37,488:CONFIG:192.168.1.18:connecting to host: root@192.168.1.18:830
+2018-04-25 17:17:37,692:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.9)
+2018-04-25 17:17:38,035:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-25 17:17:38,374:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-25 17:17:40,120:ncclient.transport.session:initialized: session-id=66936 | server_capabilities=<dictionary-keyiterator object at 0x7f4f8eddeba8>
+2018-04-25 17:17:40,120:CONFIG:192.168.1.18:pushing file: /tmp/sec_flow_tcp_mss.set
+2018-04-25 17:17:40,121:CONFIG:192.168.1.18:taking lock
+2018-04-25 17:17:40,121:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:40,237:CONFIG:192.168.1.18:loading config
+2018-04-25 17:17:40,238:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:40,353:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:41,321:CONFIG:192.168.1.18:unlocking
+2018-04-25 17:17:41,321:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:41,537:CONFIG:192.168.1.18:change completed
+2018-04-25 17:17:41,537:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-25 17:17:42,597:CONFIG:192.168.1.18:connecting to host: root@192.168.1.18:830
+2018-04-25 17:17:42,872:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.9)
+2018-04-25 17:17:43,211:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-25 17:17:43,493:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-25 17:17:45,298:ncclient.transport.session:initialized: session-id=66943 | server_capabilities=<dictionary-keyiterator object at 0x7f83e4135ba8>
+2018-04-25 17:17:45,298:CONFIG:192.168.1.18:pushing file: /tmp/interfaces.set
+2018-04-25 17:17:45,298:CONFIG:192.168.1.18:taking lock
+2018-04-25 17:17:45,299:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:45,414:CONFIG:192.168.1.18:loading config
+2018-04-25 17:17:45,415:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:45,580:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:46,948:CONFIG:192.168.1.18:unlocking
+2018-04-25 17:17:46,949:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:47,064:CONFIG:192.168.1.18:change completed
+2018-04-25 17:17:47,064:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-25 17:17:47,970:CONFIG:192.168.1.18:connecting to host: root@192.168.1.18:830
+2018-04-25 17:17:48,177:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.9)
+2018-04-25 17:17:48,477:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-25 17:17:48,776:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-25 17:17:50,547:ncclient.transport.session:initialized: session-id=66981 | server_capabilities=<dictionary-keyiterator object at 0x7f0534974ba8>
+2018-04-25 17:17:50,547:CONFIG:192.168.1.18:pushing file: /tmp/interfaces_zone.set
+2018-04-25 17:17:50,547:CONFIG:192.168.1.18:taking lock
+2018-04-25 17:17:50,548:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:50,713:CONFIG:192.168.1.18:loading config
+2018-04-25 17:17:50,714:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:50,828:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:51,595:CONFIG:192.168.1.18:unlocking
+2018-04-25 17:17:51,595:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:51,760:CONFIG:192.168.1.18:change completed
+2018-04-25 17:17:51,760:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-25 17:17:52,626:CONFIG:192.168.1.18:connecting to host: root@192.168.1.18:830
+2018-04-25 17:17:52,981:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.9)
+2018-04-25 17:17:53,321:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-25 17:17:53,590:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-25 17:17:55,484:ncclient.transport.session:initialized: session-id=66988 | server_capabilities=<dictionary-keyiterator object at 0x7f122c15cba8>
+2018-04-25 17:17:55,485:CONFIG:192.168.1.18:pushing file: /tmp/customize_centor_vpn_ike.set
+2018-04-25 17:17:55,485:CONFIG:192.168.1.18:taking lock
+2018-04-25 17:17:55,485:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:55,650:CONFIG:192.168.1.18:loading config
+2018-04-25 17:17:55,651:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:55,865:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:56,682:CONFIG:192.168.1.18:doing a commit-check, please be patient
+2018-04-25 17:17:56,682:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:17:59,804:CONFIG:192.168.1.18:committing change, please be patient
+2018-04-25 17:17:59,804:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:04,378:CONFIG:192.168.1.18:unlocking
+2018-04-25 17:18:04,378:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:04,542:CONFIG:192.168.1.18:change completed
+2018-04-25 17:18:04,543:ncclient.operations.rpc:Requesting 'CloseSession'
+2018-04-25 17:18:05,406:CONFIG:192.168.1.18:connecting to host: root@192.168.1.18:830
+2018-04-25 17:18:05,582:ncclient.transport.ssh:Connected (version 2.0, client OpenSSH_6.9)
+2018-04-25 17:18:05,940:ncclient.transport.ssh:Authentication (publickey) failed.
+2018-04-25 17:18:06,261:ncclient.transport.ssh:Authentication (password) successful!
+2018-04-25 17:18:08,926:ncclient.transport.session:initialized: session-id=67052 | server_capabilities=<dictionary-keyiterator object at 0x7f8cf6656ba8>
+2018-04-25 17:18:08,926:CONFIG:192.168.1.18:pushing file: /tmp/customize_vpn_ipsec.set
+2018-04-25 17:18:08,926:CONFIG:192.168.1.18:taking lock
+2018-04-25 17:18:08,927:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:09,042:CONFIG:192.168.1.18:loading config
+2018-04-25 17:18:09,042:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:09,257:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:10,124:CONFIG:192.168.1.18:unlocking
+2018-04-25 17:18:10,126:ncclient.operations.rpc:Requesting 'ExecuteRpc'
+2018-04-25 17:18:10,292:CONFIG:192.168.1.18:change completed
+2018-04-25 17:18:10,292:ncclient.operations.rpc:Requesting 'CloseSession'

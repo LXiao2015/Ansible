@@ -9,20 +9,23 @@
      - junos_user: "root"
      - junos_password: "TURdj5mplsvpn!"
      - build_dir: "/tmp/"
-     - snat_rule: [{"rule-set-name":"{{rule-set-name}}","from-zome":"{{from-zome}}","to-zone":"{{to-zone}}","source-address":"{{source-address}}","from-interface":"{{from-interface}}","to-interface":"{{to-interface}}"}]
+     - snat_rule: [
+                 {'rule_set_name':'{{rule_set_name}}','from_zone':'{{from_zone}}',
+                   't_zone':'{{t_zone}}','address':'{{address}}',
+                   'from_interface' : '{{from_interface}}','t_interface' : '{{t_interface}}','r_name' : '{{r_name}}'}]
      
     
      tasks:
-     - name: Config interface information
+     - name: Config snat information
        template: src=templates/base_snat.set.j2 dest={{build_dir}}/base_snat.set
-       with_items:
+       with_items: '{{snat_rule}}'
 
-     - name: Apply idp_policy
+     - name: Apply snat
        junos_install_config: 
         host={{inventory_hostname}}
         user={{junos_user}}
         passwd={{junos_password}}
-        file={{ build_dir }}/base_inteface_info.set
+        file={{ build_dir }}/base_snat.set
         overwrite=false
         logfile=logs/{{ inventory_hostname }}.log
-        comment='Apply base interface interface'
+        comment='Apply base snat'
